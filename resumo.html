@@ -69,5 +69,37 @@
   </div>
 
   <script>
+    const prefix = 'registro-setores-';
+
     function carregarResumo() {
-      const data = JSON.parse(localStorage.getItem('reg
+      const data = JSON.parse(localStorage.getItem(`${prefix}registros`) || '{}');
+      const tbody = document.getElementById('resumoTabela');
+      tbody.innerHTML = '';
+      Object.keys(data).sort().forEach(letra => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${letra}</td><td>${data[letra]}</td>`;
+        tbody.appendChild(row);
+      });
+    }
+
+    function resetarDados() {
+      if (confirm('Tem certeza que deseja limpar todos os dados?')) {
+        localStorage.removeItem(`${prefix}registros`);
+        carregarResumo();
+      }
+    }
+
+    function enviarWhatsApp() {
+      const data = JSON.parse(localStorage.getItem(`${prefix}registros`) || '{}');
+      let msg = 'Resumo de registros de setores:%0A';
+      Object.keys(data).sort().forEach(letra => {
+        msg += `${letra}: ${data[letra]} caixas%0A`;
+      });
+      const url = `https://wa.me/?text=${msg}`;
+      window.open(url, '_blank');
+    }
+
+    carregarResumo();
+  </script>
+</body>
+</html>
