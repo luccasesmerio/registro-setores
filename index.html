@@ -60,6 +60,7 @@
   <button class="float-btn" onclick="window.location.href='resumo.html'">&#x1F4CA;</button>
 
   <script>
+    const prefix = 'registro-setores-';
     const grid = document.getElementById('letterGrid');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -67,9 +68,9 @@
       const btn = document.createElement('button');
       btn.textContent = letter;
       btn.onclick = () => {
-        const data = JSON.parse(localStorage.getItem('registros') || '{}');
+        const data = JSON.parse(localStorage.getItem(`${prefix}registros`) || '{}');
         data[letter] = (data[letter] || 0) + 1;
-        localStorage.setItem('registros', JSON.stringify(data));
+        localStorage.setItem(`${prefix}registros`, JSON.stringify(data));
       };
       grid.appendChild(btn);
     });
