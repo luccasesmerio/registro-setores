@@ -40,40 +40,4 @@
     }
     .float-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #6200ea;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-  </style>
-</head>
-<body>
-  <h1>Registro de Setores</h1>
-  <div class="grid" id="letterGrid"></div>
-
-  <button class="float-btn" onclick="window.location.href='resumo.html'">&#x1F4CA;</button>
-
-  <script>
-    const prefix = 'registro-setores-';
-    const grid = document.getElementById('letterGrid');
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
-    letters.forEach(letter => {
-      const btn = document.createElement('button');
-      btn.textContent = letter;
-      btn.onclick = () => {
-        const data = JSON.parse(localStorage.getItem(`${prefix}registros`) || '{}');
-        data[letter] = (data[letter] || 0) + 1;
-        localStorage.setItem(`${prefix}registros`, JSON.stringify(data));
-      };
-      grid.appendChild(btn);
-    });
-  </script>
-</body>
-</html>
+      bottom:
